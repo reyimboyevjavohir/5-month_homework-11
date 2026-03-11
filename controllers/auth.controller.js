@@ -10,7 +10,7 @@ function signToken(user) {
 	)
 }
 
-// POST /api/auth/register
+
 exports.register = async (req, res, next) => {
 	try {
 		const { firstName, lastName, phone, avatarUrl, email, password, role } = req.body
@@ -50,7 +50,7 @@ exports.register = async (req, res, next) => {
 	}
 }
 
-// POST /api/auth/login
+
 exports.login = async (req, res, next) => {
 	try {
 		const { email, password } = req.body

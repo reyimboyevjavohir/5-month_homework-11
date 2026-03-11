@@ -20,11 +20,11 @@ app.use(cors())
 app.use('/api/authors', authorRouter)
 app.use('/api/books', bookRouter)
 
-// Auth & Profile (Postman orqali ishlaydi)
+
 app.use('/api/auth', authRouter)
 app.use('/api/profile', profileRouter)
 
-// Car website backend
+
 app.use('/api/categories', categoryRouter)
 app.use('/api/cars', carRouter)
 

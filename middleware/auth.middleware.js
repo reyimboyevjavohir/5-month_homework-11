@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/user.model')
 
-// Bearer token orqali himoya
+
 module.exports = async function authMiddleware(req, res, next) {
 	try {
 		const header = req.headers.authorization || ''

@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs')
 const crypto = require('crypto')
 const User = require('../models/user.model')
 
-// GET /api/profile
+
 exports.getMyProfile = async (req, res, next) => {
 	try {
 		const u = req.user
@@ -22,12 +22,12 @@ exports.getMyProfile = async (req, res, next) => {
 	}
 }
 
-// PUT /api/profile
+
 exports.updateMyProfile = async (req, res, next) => {
 	try {
 		const { firstName, lastName, phone, email, avatarUrl } = req.body
 
-		// Email update bo‘lsa: unique tekshiramiz
+		
 		if (email && String(email).toLowerCase() !== req.user.email) {
 			const exists = await User.findOne({ email: String(email).toLowerCase() })
 			if (exists) return res.status(409).json({ message: 'Bu email boshqa userda bor' })
@@ -46,7 +46,7 @@ exports.updateMyProfile = async (req, res, next) => {
 	}
 }
 
-// DELETE /api/profile
+
 exports.deleteMyProfile = async (req, res, next) => {
 	try {
 		await User.deleteOne({ _id: req.user._id })
@@ -56,7 +56,7 @@ exports.deleteMyProfile = async (req, res, next) => {
 	}
 }
 
-// PUT /api/profile/password
+
 exports.changePassword = async (req, res, next) => {
 	try {
 		const { currentPassword, newPassword, confirmPassword } = req.body
@@ -79,8 +79,7 @@ exports.changePassword = async (req, res, next) => {
 	}
 }
 
-// POST /api/profile/password/recover/start
-// Demo: otp ni response'ga qaytaramiz (realda email/sms)
+
 exports.recoverStart = async (req, res, next) => {
 	try {
 		const { email } = req.body
@@ -102,7 +101,7 @@ exports.recoverStart = async (req, res, next) => {
 	}
 }
 
-// POST /api/profile/password/recover/finish
+
 exports.recoverFinish = async (req, res, next) => {
 	try {
 		const { email, otp, newPassword, confirmPassword } = req.body
